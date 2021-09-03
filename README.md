@@ -20,11 +20,15 @@ Após a iniciação, crie seu banco de dados, rode os scripts contidos no arquiv
 
 
 Como inicializar o Backend
+
 Acesse a pasta api e, dentro do terminal, digite npm install e depois npm start
+
 Apos iniciar o backend, caso queira acessar seu link, sua url é: http://localhost:4000/
 
 
 
 Como inicializar o Frontend
+
 Acesse a pasta spa e, dentro do terminal, digite npm install e depois npm start
+
 Apos iniciar o frontend, acesse através de sua url: http://localhost:3000/
