@@ -52,12 +52,12 @@ exports.updateProfessionalById = async (req, res) => {
 };
 
 exports.deleteProfessionalById = async (req, res) => {
-  const father = await db.query('SELECT * FROM professional WHERE professional_type = $1', [professionalId]);
+  const professionalId = parseInt(req.params.id);
+  const father = await db.query('SELECT * FROM professional WHERE tipodeprofissional = $1', [professionalId]);
   if (father.rows.length > 0) {
     res.status(400).send({ message: 'You cannot delete a parent row.' });
   }
   else {
-      const professionalId = parseInt(req.params.id);
       await db.query('DELETE FROM professional_type WHERE id = $1', [
         professionalId
       ]);

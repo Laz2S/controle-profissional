@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {  FiArrowLeft } from 'react-icons/fi';
 import Logo from '../../../assets/logo.png';
+import Index from '../Index/index'
 import { Container } from './styles';
 import { useRouteMatch } from 'react-router-dom';
 import { ProfessionalType } from "../../../services/interfaces";
@@ -51,6 +52,7 @@ const Detail: React.FC = () => {
         </fieldset>
         
       </div>
+      <Index/>
         </Container>
             
     );
