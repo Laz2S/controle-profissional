@@ -1,0 +1,21 @@
+CREATE TABLE professional_type(
+	id serial PRIMARY KEY,
+	descricao VARCHAR ( 255 ) NOT NULL,
+	situacao BOOLEAN NOT NULL,
+	updatedAt TIMESTAMP NOT NULL,
+	createdAt TIMESTAMP NOT NULL
+);
+
+CREATE TABLE professional(
+	id serial PRIMARY KEY,
+	nome VARCHAR (255) NOT NULL,
+	telefone VARCHAR (255),
+	email VARCHAR (255),
+	situacao BOOLEAN NOT NULL,
+	updatedAt TIMESTAMP NOT NULL,
+	createdAt TIMESTAMP NOT NULL,
+	tipoDeProfissional INT NOT NULL,
+	FOREIGN KEY (tipoDeProfissional)
+		REFERENCES professional_type (id)
+);
+
