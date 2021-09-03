@@ -1,5 +1,6 @@
 const db = require("../config/database");
 
+    // metodo Post
 exports.createProfessional = async (req, res) => {
     const createdAt = new Date().toISOString();
     const updatedAt = new Date().toISOString();
@@ -18,6 +19,7 @@ exports.createProfessional = async (req, res) => {
     });
 };
 
+    // metodo Get Collection
 exports.listAllProfessionals = async (req, res) => {
     const query = req.query
 
@@ -30,6 +32,7 @@ exports.listAllProfessionals = async (req, res) => {
 
     let array = []
 
+    // funcao para organizar as informacoes do json com retorno de FK com seu corpo
     const someFunction = (myArray) => {
       const promises = myArray.map(async (o) => {
         const professionalType = await db.query('SELECT * FROM professional_type WHERE id = $1', [o.tipodeprofissional]);
@@ -55,6 +58,7 @@ exports.listAllProfessionals = async (req, res) => {
     res.status(200).send(ret);
 };
 
+    // metodo Get One
 exports.findProfessionalById = async (req, res) => {
   const professionalId = parseInt(req.params.id);
   const response = await db.query('SELECT * FROM professional WHERE id = $1', [professionalId]);
@@ -65,6 +69,7 @@ exports.findProfessionalById = async (req, res) => {
 
     let body = {}
 
+    // funcao para organizar as informacoes do json com retorno de FK com seu corpo
     const someFunction = async (o) => {
     console.log(o)
       const professionalType = await db.query('SELECT * FROM professional_type WHERE id = $1', [o.tipodeprofissional]);
@@ -84,6 +89,7 @@ exports.findProfessionalById = async (req, res) => {
     res.status(200).send(body);
 }
 
+    // metodo Put
 exports.updateProfessionalById = async (req, res) => {
   const updatedAt = new Date().toISOString();
   const professionalId = parseInt(req.params.id);
@@ -97,6 +103,7 @@ exports.updateProfessionalById = async (req, res) => {
   res.status(200).send({ message: "Professional Updated Successfully!" });
 };
 
+    // metodo Delete
 exports.deleteProfessionalById = async (req, res) => {
   const professionalId = parseInt(req.params.id);
   await db.query('DELETE FROM professional WHERE id = $1', [

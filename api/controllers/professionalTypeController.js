@@ -1,5 +1,6 @@
 const db = require("../config/database");
 
+    // metodo Post
 exports.createProfessional = async (req, res) => {
   const createdAt = new Date().toISOString();
   const updatedAt = new Date().toISOString();
@@ -17,6 +18,7 @@ exports.createProfessional = async (req, res) => {
   });
 };
 
+    // metodo Get List
 exports.listAllProfessionals = async (req, res) => {
     const query = req.query
 
@@ -32,6 +34,7 @@ exports.listAllProfessionals = async (req, res) => {
     res.status(200).send(ret);
 };
 
+    // metodo Get One
 exports.findProfessionalById = async (req, res) => {
   const professionalId = parseInt(req.params.id);
   const response = await db.query('SELECT * FROM professional_type WHERE id = $1', [professionalId]);
@@ -43,6 +46,7 @@ exports.findProfessionalById = async (req, res) => {
   res.status(200).send(response.rows[0]);
 }
 
+    // metodo Put
 exports.updateProfessionalById = async (req, res) => {
   const updatedAt = new Date().toISOString();
   const professionalId = parseInt(req.params.id);
@@ -56,8 +60,11 @@ exports.updateProfessionalById = async (req, res) => {
   res.status(200).send({ message: "Professional Type Updated Successfully!" });
 };
 
+    // metodo Delete
 exports.deleteProfessionalById = async (req, res) => {
   const professionalId = parseInt(req.params.id);
+
+    // Antes de fazer o delete, observa se existem registros utilizando professional_type especifico como FK
   const father = await db.query('SELECT * FROM professional WHERE tipodeprofissional = $1', [professionalId]);
   if (father.rows.length > 0) {
     res.status(400).send({ message: 'You cannot delete a parent row.' });
