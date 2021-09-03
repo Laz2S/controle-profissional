@@ -3,7 +3,7 @@ Projeto com intuito de estudo
 
 Backend - Node.js
 
-Frontend - React.js
+Frontend - React.js (Typescript)
 
 Banco - Postgresql
 
