@@ -59,6 +59,10 @@ exports.findProfessionalById = async (req, res) => {
   const professionalId = parseInt(req.params.id);
   const response = await db.query('SELECT * FROM professional WHERE id = $1', [professionalId]);
 
+    if (response.rows.length == 0) {
+        res.status(400).send("No professional found with id " + professionalId);
+    }
+
     let body = {}
 
     const someFunction = async (o) => {
